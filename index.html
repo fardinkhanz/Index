@@ -2,36 +2,366 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>For Misha ❤️</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div id="hearts"></div>
-<section class="hero">
-<div class="card">
-<h1>For Misha ❤️</h1>
-<p id="typing"></p>
-<button id="openBtn">Open My Heart ❤️</button>
 
-<div id="letter" class="hidden">
-<h2>My Dearest Misha,</h2>
-<p>I know you're upset, and I completely understand why.</p>
-<p>I didn't make this page because I expect everything to be okay instantly. I made it because I wanted you to know how much you mean to me.</p>
-<p><b>No matter what happens, I'll always have your back.</b> Through your happy days, difficult days, victories and tears—I want to be the person standing beside you.</p>
-<p>You deserve patience, kindness, respect, and love. I may not be perfect, but every day I'll try to become a better person for us.</p>
-<p>If today isn't the day you forgive me, that's okay. I'll still care about your smile, your peace, and your happiness.</p>
-<div class="buttons">
-<button onclick="showMsg('angry')">😠 I'm Angry</button>
-<button onclick="showMsg('sad')">🥺 I'm Sad</button>
-<button onclick="showMsg('miss')">❤️ Missing You?</button>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffd3a5);
+}
+
+.card{
+
+width:90%;
+max-width:650px;
+padding:40px;
+text-align:center;
+border-radius:25px;
+background:rgba(255,255,255,.18);
+backdrop-filter:blur(15px);
+box-shadow:0 15px 40px rgba(0,0,0,.2);
+color:white;
+
+}
+
+h1{
+font-size:48px;
+margin-bottom:20px;
+}
+
+#typing{
+
+font-size:22px;
+line-height:1.8;
+min-height:170px;
+
+}
+
+.question{
+
+display:none;
+margin-top:30px;
+
+}
+
+button{
+
+padding:15px 35px;
+margin:20px;
+font-size:18px;
+border:none;
+border-radius:40px;
+cursor:pointer;
+transition:.3s;
+
+}
+
+#yes{
+
+background:white;
+color:#ff4b7d;
+
+}
+
+#no{
+
+background:#ff4b7d;
+color:white;
+
+}
+
+.popup{
+
+display:none;
+margin-top:25px;
+font-size:22px;
+line-height:1.8;
+
+animation:fade .8s;
+
+}
+
+@keyframes fade{
+
+from{
+opacity:0;
+transform:translateY(20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.heart{
+
+position:absolute;
+color:white;
+animation:float linear infinite;
+opacity:.5;
+
+}
+
+@keyframes float{
+
+from{
+
+transform:translateY(100vh);
+
+}
+
+to{
+
+transform:translateY(-120vh);
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>❤️ Hi Misha ❤️</h1>
+
+<div id="typing"></div>
+
+<div class="question" id="question">
+
+<h2>Who do you think misses the other person more? 🥺</h2>
+
+<button id="yes">🙈 You Miss Me More</button>
+<button id="no">🥹 I Miss Misha More</button>
+
 </div>
-<div id="popup" class="popup hidden"></div>
+
+<div class="popup" id="popup"></div>
+
 </div>
-</div>
-</section>
-<script src="script.js"></script>
+
+<script>
+
+const text=`Myy GOO BOII ❤️
+
+I just wanted to tell you something...
+
+No matter how today feels,
+I'll always have your back.
+
+I'll always root for your happiness.
+
+And one more thing...
+
+I miss you.
+Probably a lot more than you think. 🥺❤️`;
+
+let i=0;
+
+function type(){
+
+    if(i<text.length){
+
+        document.getElementById("typing").innerHTML+=text.charAt(i);
+
+        i++;
+
+        setTimeout(type,45);
+
+    }else{
+
+        document.getElementById("question").style.display="block";
+
+    }
+
+}
+
+type();
+
+const popup=document.getElementById("popup");
+
+const yes=document.getElementById("yes");
+
+const no=document.getElementById("no");
+
+let hoverCount=0;
+
+const funnyTexts=[
+"😜 Nope!",
+"😂 Too Slow!",
+"🤭 Almost!",
+"😏 Keep Trying!",
+"🏃 Catch Me!",
+"🤣 Still No!",
+"🙈 Hehe!",
+"❤️ Not Yet!",
+"😆 One More!",
+"🥺 Okay... Fine!"
+];
+
+yes.style.cursor="not-allowed";
+
+yes.addEventListener("mouseover",()=>{
+
+    if(hoverCount<10){
+
+        yes.innerHTML=funnyTexts[hoverCount];
+
+        yes.style.position="relative";
+
+        yes.style.left=(Math.random()*260-130)+"px";
+
+        yes.style.top=(Math.random()*120-60)+"px";
+
+        hoverCount++;
+
+    }
+    else{
+
+        yes.innerHTML="😇 You";
+
+        yes.style.left="0px";
+
+        yes.style.top="0px";
+
+        yes.style.cursor="pointer";
+
+    }
+
+});
+
+yes.onclick=function(){
+
+    if(hoverCount<10){
+
+        popup.style.display="block";
+
+        popup.innerHTML=`
+
+        <h2>😂 Heyyy!!</h2>
+
+        <p>
+
+        You have to catch the button first!
+
+        <br><br>
+
+        Current Progress:
+
+        <b>${hoverCount}/10</b>
+
+        </p>
+
+        `;
+
+        return;
+
+    }
+
+    popup.style.display="block";
+
+    popup.innerHTML=`
+
+    <h2>😂 You finally caught me!</h2>
+
+    <p style="line-height:1.8">
+
+    After making you chase me so many times...
+
+    I think you've earned the truth.
+
+    <br><br>
+
+    ❤️ <b>I MISS YOU MORE.</b>
+
+    🤗 Sending one huge hug.
+
+    <br><br>
+
+    😊 Mission Complete:
+
+    <b>Can I get one smile from my Rasmalai?</b>
+
+    </p>
+
+    `;
+
+}
+
+no.onclick=function(){
+
+    popup.style.display="block";
+
+    popup.innerHTML=`
+
+    <h2>🤣 I KNEW IT!</h2>
+
+    <p style="line-height:1.8">
+
+    You chose the correct answer, Proud of you.
+
+    🏆
+
+    <br><br>
+
+    Thank you for accepting reality.
+
+   <br><br>
+    😊 You just made my day.
+<b>Now give me a pyarii smile my gulab jamun</b>
+    </p>
+
+    `;
+
+}
+
+// Floating Hearts
+
+setInterval(()=>{
+
+    const h=document.createElement("div");
+
+    h.className="heart";
+
+    h.innerHTML="❤️";
+
+    h.style.left=Math.random()*100+"vw";
+
+    h.style.fontSize=(15+Math.random()*20)+"px";
+
+    h.style.animationDuration=(6+Math.random()*6)+"s";
+
+    document.body.appendChild(h);
+
+    setTimeout(()=>{
+
+        h.remove();
+
+    },12000);
+
+},300);
+
+</script>
 </body>
+
 </html>
