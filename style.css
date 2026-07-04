@@ -1,0 +1,7 @@
+body{margin:0;font-family:Poppins,sans-serif;background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffd3a5);min-height:100vh;display:flex;justify-content:center;align-items:center;overflow:auto}
+.card{width:min(90%,760px);background:rgba(255,255,255,.18);backdrop-filter:blur(12px);padding:35px;border-radius:20px;color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.25);text-align:center}
+h1{font-family:'Dancing Script',cursive;font-size:56px}.hidden{display:none}
+button{padding:12px 20px;border:none;border-radius:999px;margin:8px;cursor:pointer}
+.popup{background:#fff;color:#444;padding:20px;border-radius:16px;margin-top:20px}
+.heart{position:fixed;color:#fff;opacity:.4;animation:f 8s linear forwards}
+@keyframes f{from{transform:translateY(100vh)}to{transform:translateY(-120vh)}}
