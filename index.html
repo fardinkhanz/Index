@@ -17,39 +17,38 @@ font-family:Poppins,sans-serif;
 }
 
 body{
-height:100vh;
-overflow:hidden;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffd3a5);
+    min-height:100vh;
+    overflow-x:hidden;
+    overflow-y:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffd3a5);
 }
 
 .card{
-
-width:90%;
-max-width:650px;
-padding:40px;
-text-align:center;
-border-radius:25px;
-background:rgba(255,255,255,.18);
-backdrop-filter:blur(15px);
-box-shadow:0 15px 40px rgba(0,0,0,.2);
-color:white;
-
+    width:100%;
+    max-width:420px;
+    padding:28px;
+    text-align:center;
+    border-radius:25px;
+    background:rgba(255,255,255,.18);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.25);
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+    color:white;
 }
 
 h1{
-font-size:48px;
-margin-bottom:20px;
+    font-size:38px;
+    margin-bottom:18px;
 }
-
 #typing{
-
-font-size:22px;
-line-height:1.8;
-min-height:170px;
-
+    font-size:18px;
+    line-height:1.8;
+    min-height:190px;
+    white-space:pre-line;
 }
 
 .question{
@@ -61,13 +60,23 @@ margin-top:30px;
 
 button{
 
-padding:15px 35px;
-margin:20px;
-font-size:18px;
+width:100%;
+
+padding:16px;
+
+margin-top:15px;
+
+font-size:17px;
+
+font-weight:600;
+
 border:none;
+
 border-radius:40px;
-cursor:pointer;
+
 transition:.3s;
+
+cursor:pointer;
 
 }
 
@@ -88,11 +97,32 @@ color:white;
 .popup{
 
 display:none;
-margin-top:25px;
-font-size:22px;
-line-height:1.8;
 
-animation:fade .8s;
+position:fixed;
+
+left:50%;
+
+top:50%;
+
+transform:translate(-50%,-50%);
+
+width:90%;
+
+max-width:360px;
+
+padding:25px;
+
+background:white;
+
+color:#444;
+
+border-radius:20px;
+
+box-shadow:0 20px 50px rgba(0,0,0,.3);
+
+z-index:100;
+
+animation:fade .5s;
 
 }
 
@@ -112,10 +142,15 @@ transform:translateY(0);
 
 .heart{
 
-position:absolute;
+position:fixed;
+
+pointer-events:none;
+
 color:white;
-animation:float linear infinite;
+
 opacity:.5;
+
+animation:float linear infinite;
 
 }
 
@@ -229,9 +264,11 @@ yes.addEventListener("mouseover",()=>{
 
         yes.style.position="relative";
 
-        yes.style.left=(Math.random()*260-130)+"px";
+const maxX = window.innerWidth < 500 ? 70 : 130;
+const maxY = window.innerWidth < 500 ? 35 : 60;
 
-        yes.style.top=(Math.random()*120-60)+"px";
+yes.style.left = (Math.random() * maxX * 2 - maxX) + "px";
+yes.style.top = (Math.random() * maxY * 2 - maxY) + "px";
 
         hoverCount++;
 
@@ -328,7 +365,8 @@ no.onclick=function(){
 
    <br><br>
     😊 You just made my day.
-<b>Now give me a pyarii smile my gulab jamun</b>
+<b>Now give me a pyarii smile my gulab jamun,
+Because that's my favourite thing in the whole world. ❤️</b>
     </p>
 
     `;
